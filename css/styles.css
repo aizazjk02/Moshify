@@ -6,3 +6,10 @@
     --color-body:#918ca4;
 }
 
+body {
+    font-family: Inter,Arial, Helvetica, sans-serif;
+    color: var(--color-body);
+}
+h1,h2,h3 {
+    color: var(--color-headings);
+}
