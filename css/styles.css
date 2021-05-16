@@ -1,4 +1,8 @@
-
+/* Notes
+tag--something is used for the derivative of the class
+tag__something is used for the child of the class
+tag-something is used for clones with different use 
+*/
 /* Color Palette */
 
 :root {
@@ -153,4 +157,30 @@ a {
   .list--tick .list__item {
     padding-left: 0;
   }
+}
+
+/* icons */
+
+.icon {
+  width: 40px;
+  height: 40px;
+  /* this is the hack that I found to center the icon
+  for some reason the icon was not centered even after the flex 
+  so I had to play with the margins to find out the center position */
+  margin-right: 25%;
+  margin-left: 25%;
+}
+
+.icon--primary {
+  fill: var(--color-primary);
+}
+
+.icon-container {
+  background-color: gold;
+  width: 64px;
+  height: 64px;
+  border-radius: 100%;
+  display: inline-flex;
+  justify-items: center;
+  align-items: center;
 }
