@@ -261,3 +261,24 @@ a {
     font-size: 1.5rem;
   }
 }
+
+/* Inputs */
+
+.input {
+  color: var(--color-headings);
+  border-radius: 30px;
+  border: 1px solid #ccc;
+  font-size: 2rem;
+  outline: 0; /*chrome add some blue outline bydefault so we need to remove that outline*/
+  padding: 1.5rem 3.5rem;
+}
+
+.input::placeholder {
+  color: #cdcbd7;
+}
+
+@media screen and (min-width:1024px) {
+  .input {
+    font-size: 1.5rem;
+  }
+}
