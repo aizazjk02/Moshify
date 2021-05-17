@@ -268,7 +268,7 @@ a {
 
 .input {
   color: var(--color-headings);
-  border-radius: 30px;
+  border-radius: var(--border-radius);
   border: 1px solid #ccc;
   font-size: 2rem;
   outline: 0; /*chrome add some blue outline bydefault so we need to remove that outline*/
@@ -298,4 +298,33 @@ a {
   .input {
     font-size: 1.5rem;
   }
+}
+
+/* Cards */
+
+.card {
+  border-radius: 7px;
+  box-shadow: 0 0 10px 20px #f3f3f3;
+  overflow: hidden;
+}
+
+.card__header,
+.card__body {
+  padding: 2rem 3rem;
+}
+
+.card--primary .card__header {
+  background-color: var(--color-primary);
+  color: #fff;
+}
+.card--secondary .card__header {
+  background-color: var(--color-secondary);
+  color: #fff;
+}
+
+.card-container {
+  width: 30%;
+  padding: 4rem;
+  
+  
 }
