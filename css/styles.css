@@ -200,7 +200,7 @@ a {
 }
 
 .icon-container {
-  background-color: gold;
+  background-color:#f3f9fa ;
   width: 64px;
   height: 64px;
   border-radius: 100%;
@@ -790,4 +790,29 @@ a {
 
 .block-plans .card {
   max-width: 500px;
+}
+
+
+/* features */
+.features {
+  gap: 4rem 2rem;
+  margin: 12rem 0;
+}
+
+.features:first-of-type {
+  margin-top: 6rem;
+}
+
+.feature__heading {
+  margin: 1rem 0;
+}
+
+.feature__image {
+  width: 100%;
+}
+
+@media screen and (min-width:768px) {
+  .features:nth-child(odd) .feature__content {
+    order: 2;
+  }
 }
