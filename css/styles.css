@@ -848,6 +848,7 @@ a {
 .footer__brand img {
   /* TODO: consider refactoring this and applying it to all images */
   width: 100%;
+  max-width: 250px;
 }
 
 .footer__copyright {
