@@ -1,2 +1,4 @@
-.components
+components
+dist
+.cache
 node_modules
