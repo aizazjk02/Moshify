@@ -1,17 +1,3 @@
-/* Notes
-tag--something is used for the derivative of the class
-tag__something is used for the child of the class
-tag-something is used for clones with different use 
-
-
-we will be using the oops approach here 
-we will be defining the structure and the skins differently
-
-about the buttons as anchor tags
-while using them as buttons the border box property needs to be applied or else the content will flow outside the window
-*/
-/* Color Palette */
-
 :root {
   --color-primary: #2584ff;
   --color-secondary: #00d9ff;
@@ -29,20 +15,24 @@ while using them as buttons the border box property needs to be applied or else 
   box-sizing: border-box;
 }
 
-/* typography */
+/* Typography */
+::selection {
+  background: var(--color-primary);
+  color: #fff;
+}
 
 html {
-  /* The 62.5% of the 16px is 10px 
-    this just makes the rem calculations easy for us */
+  /* 62.5% of 16px = 10px */
   font-size: 62.5%;
 }
 
 body {
-  font-family: Inter, Montserrat, Arial, Helvetica, sans-serif;
-  color: var(--color-body);
+  font-family: Inter, Arial, Helvetica, sans-serif;
   font-size: 2.4rem;
-  line-height: 1.5; /* this sets the line height to 1.5 times of the font size*/
+  line-height: 1.5;
+  color: var(--color-body);
 }
+
 h1,
 h2,
 h3 {
@@ -61,6 +51,7 @@ h2 {
 
 h3 {
   font-size: 3rem;
+  font-weight: 500;
 }
 
 p {
@@ -75,9 +66,11 @@ p {
   h1 {
     font-size: 8rem;
   }
+
   h2 {
     font-size: 4rem;
   }
+
   h3 {
     font-size: 2.4rem;
   }
@@ -110,29 +103,29 @@ a {
     font-size: 1.5rem;
   }
 }
-
 /* Badges */
 
 .badge {
   border-radius: 20px;
-  padding: 0.5rem 2rem;
-  font-weight: 600;
-  white-space: nowrap; /*this prevents the element from wrapping itself to the next line 
-  if there is less or compact space for it*/
   font-size: 2rem;
+  font-weight: 600;
+  padding: 0.5rem 2rem;
+  white-space: nowrap;
 }
 
 .badge--primary {
-  background-color: var(--color-primary) ;
+  background: var(--color-primary);
   color: #fff;
 }
+
 .badge--secondary {
-  background-color: var(--color-secondary);
+  background: var(--color-secondary);
   color: #fff;
 }
 
 .badge--small {
   font-size: 1.6rem;
+  padding: 0.5rem 1.5rem;
 }
 
 @media screen and (min-width: 1024px) {
@@ -144,28 +137,26 @@ a {
     font-size: 1.2rem;
   }
 }
-
-/* List */
-
+/* Lists */
 .list {
   list-style: none;
   padding-left: 0;
-  color: var(--color-headings);
 }
 
 .list--inline .list__item {
-  display: inline-block; /*we need inline block so we can add the margins*/
+  display: inline-block;
   margin-right: 2rem;
 }
 
 .list--tick {
   list-style-image: url(../images/tick.svg);
-  padding-left: 3rem; /*usually the svg tick image will be outside the page so we need to add some padding */
+  padding-left: 3rem;
+  color: var(--color-headings);
 }
 
 .list--tick .list__item {
   padding-left: 0.5rem;
-  margin-bottom: 1rem; /*to remove or adjust the vertical space*/
+  margin-bottom: 1rem;
 }
 
 @media screen and (min-width: 1024px) {
@@ -173,17 +164,15 @@ a {
     padding-left: 0;
   }
 }
-
-/* icons */
-
+/* Icons */
 .icon {
   width: 40px;
   height: 40px;
-  /* this is the hack that I found to center the icon
-  for some reason the icon was not centered even after the flex 
-  so I had to play with the margins to find out the center position */
-  margin-right: 25%;
-  margin-left: 25%;
+}
+
+.icon--small {
+  width: 30px;
+  height: 30px;
 }
 
 .icon--primary {
@@ -194,75 +183,78 @@ a {
   fill: #fff;
 }
 
-.icon--small {
-  width: 30px;
-  height: 30px;
-}
-
 .icon-container {
-  background-color:#f3f9fa ;
+  background: #f3f9fa;
   width: 64px;
   height: 64px;
   border-radius: 100%;
   display: inline-flex;
-  justify-items: center;
+  justify-content: center;
   align-items: center;
 }
 
 .icon-container--accent {
-  background-color: var(--color-accent);
+  background: var(--color-accent);
 }
-/* Button */
 
+/* Buttons */
 .btn {
+  border-radius: 40px;
+  border: 0;
+  cursor: pointer;
   font-size: 1.8rem;
   font-weight: 600;
-  padding: 2rem 3rem;
-  text-transform: uppercase;
-  border-radius: 40px;
-  outline:none;
   margin: 1rem 0;
+  outline: 0;
+  padding: 2rem 3rem;
   text-align: center;
-  border: none;
-  white-space: nowrap; /*this is used so that when the space is reduced the text inside the btn should not go to the next line*/
-  cursor: pointer;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.btn .icon {
+  width: 2rem;
+  height: 2rem;
+  margin-right: 1rem;
+  vertical-align: middle;
 }
 
 .btn--primary {
-  background-color: var(--color-primary);
+  background: var(--color-primary);
   color: #fff;
 }
 
 .btn--primary:hover {
-  background-color: #3a8ffd;
+  background: #3a8ffd;
 }
 
 .btn--secondary {
-  background-color: var(--color-secondary);
+  background: var(--color-secondary);
   color: #fff;
 }
 
 .btn--secondary:hover {
-  background-color: #00c8eb;
+  background: #05cdf0;
 }
+
 .btn--accent {
-  background-color: var(--color-accent);
+  background: var(--color-accent);
   color: #fff;
 }
 
 .btn--accent:hover {
-  background-color: #ec3000;
+  background: #ec3000;
 }
 
 .btn--outline {
-  background-color: #fff;
+  background: #fff;
   color: var(--color-headings);
   border: 2px solid var(--color-headings);
 }
 
 .btn--outline:hover {
+  background: var(--color-headings);
   color: #fff;
-  background-color: var(--color-headings);
 }
 
 .btn--stretched {
@@ -271,17 +263,10 @@ a {
 }
 
 .btn--block {
-  display: inline-block;
   width: 100%;
+  display: inline-block;
 }
 
-.btn--icon {
-  width: 2rem;
-  height: 2rem ;
-  margin-right: 1rem;
-  margin-left: 1rem;
-  vertical-align: middle;
-}
 @media screen and (min-width: 1024px) {
   .btn {
     font-size: 1.5rem;
@@ -289,17 +274,16 @@ a {
 }
 
 /* Inputs */
-
 .input {
-  color: var(--color-headings);
   border-radius: var(--border-radius);
-  border: 1px solid #ccc;
+  border: 1px solid var(--color-border);
+  color: var(--color-headings);
   font-size: 2rem;
-  outline: 0; /*chrome add some blue outline bydefault so we need to remove that outline*/
+  outline: 0;
   padding: 1.5rem 3.5rem;
 }
 
-.input::placeholder {
+::placeholder {
   color: #cdcbd7;
 }
 
@@ -312,23 +296,22 @@ a {
 .input-group .input {
   border: 0;
   flex-grow: 1;
-  padding: 2rem;
+  padding: 1.5rem 2rem;
 }
 
 .input-group .btn {
-  margin: 0;
+  margin: 4px;
 }
+
 @media screen and (min-width: 1024px) {
   .input {
     font-size: 1.5rem;
   }
 }
-
 /* Cards */
-
 .card {
   border-radius: 7px;
-  box-shadow: 0 0 10px 20px #f3f3f3;
+  box-shadow: 0 0 20px 10px #f3f3f3;
   overflow: hidden;
 }
 
@@ -338,17 +321,13 @@ a {
 }
 
 .card--primary .card__header {
-  background-color: var(--color-primary);
-  color: #fff;
-}
-.card--secondary .card__header {
-  background-color: var(--color-secondary);
+  background: var(--color-primary);
   color: #fff;
 }
 
-.card-container {
-  width: 30%;
-  padding: 4rem;
+.card--secondary .card__header {
+  background: var(--color-secondary);
+  color: #fff;
 }
 
 .card--primary .badge--primary {
@@ -358,11 +337,12 @@ a {
 .card--secondary .badge--secondary {
   background: #02cdf1;
 }
-/* plans */
 
+/* Plans */
 .plan {
-  transition: transform .2s ease-out;
+  transition: transform 0.2s ease-out;
 }
+
 .plan__name {
   color: #fff;
   margin: 0;
@@ -382,7 +362,7 @@ a {
 }
 
 .plan__description {
-  font-stretch: 2rem;
+  font-size: 2rem;
   font-weight: 300;
   letter-spacing: 1px;
   display: block;
@@ -393,7 +373,7 @@ a {
 }
 
 .plan--popular {
-  transform: scale(1.05);
+  transform: scale(1.1);
 }
 
 .plan--popular .card__header {
@@ -412,15 +392,16 @@ a {
 .plan:hover {
   transform: scale(1.05);
 }
-.plan--popular:hover {
-  transform: scale(1.1);
-}
 
+.plan--popular:hover {
+  transform: scale(1.15);
+}
 
 @media screen and (min-width: 1024px) {
   .plan__name {
-    font-stretch: 1.4rem;
+    font-size: 1.4rem;
   }
+
   .plan__price {
     font-size: 5rem;
   }
@@ -428,19 +409,20 @@ a {
   .plan__billing-cycle {
     font-size: 1.6rem;
   }
+
   .plan__description {
     font-size: 1.7rem;
   }
 }
 
-/* media */
-
+/* Media */
 .media {
   display: flex;
+  margin-bottom: 4rem;
 }
 
 .media__title {
-  margin: 0;
+  margin-top: 0;
 }
 
 .media__body {
@@ -450,9 +432,7 @@ a {
 .media__image {
   margin-top: 1rem;
 }
-
-/* quotes */
-
+/* Quotes */
 .quote {
   font-size: 3rem;
   font-style: italic;
@@ -479,6 +459,7 @@ a {
   color: var(--color-headings);
   opacity: 0.4;
   font-size: 2rem;
+  font-style: normal;
 }
 
 .quote__line {
@@ -490,23 +471,24 @@ a {
   .quote {
     font-size: 2rem;
   }
+
   .quote__author {
     font-size: 2.4rem;
   }
+
   .quote__organization {
     font-size: 1.6rem;
   }
 }
 
-/* grids */
-
+/* Grids */
 .grid {
   display: grid;
 }
 
 @media screen and (min-width: 768px) {
   .grid--1x2 {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -516,12 +498,14 @@ a {
   }
 }
 
+/* Testimonials */
 .testimonial {
   padding: 3rem;
 }
 
 .testimonial__image {
   position: relative;
+  margin: 0 3rem;
 }
 
 .testimonial__image > img {
@@ -535,6 +519,10 @@ a {
 }
 
 @media screen and (min-width: 768px) {
+  .testimonial__image {
+    margin: 0;
+  }
+
   .testimonial .quote,
   .testimonial .quote__author {
     font-size: 2.4rem;
@@ -542,6 +530,7 @@ a {
 
   .testimonial .quote {
     margin-left: 6rem;
+    margin-right: 0;
   }
 }
 
@@ -586,31 +575,27 @@ a {
   }
 }
 
-/* collapsible */
+/* Collapsibles */
+.collapsible__header {
+  display: flex;
+  justify-content: space-between;
+}
 
 .collapsible__heading {
   margin-top: 0;
   font-size: 3rem;
 }
 
-.collapsible__header {
-  display: flex;
-  justify-content: space-between;
-}
-
-.collapsible__header .icon {
-  justify-self: end;
-}
-
 .collapsible__chevron {
   transform: rotate(-90deg);
-  transition: transform 0.5s;
+  transition: transform 0.3s;
 }
 
 .collapsible__content {
   max-height: 0;
+  overflow: hidden;
   opacity: 0;
-  transition: all 0.5s;
+  transition: all 0.3s;
 }
 
 .collapsible--expanded .collapsible__chevron {
@@ -621,7 +606,6 @@ a {
   max-height: 100vh;
   opacity: 1;
 }
-
 /* Blocks */
 .block {
   --padding-vertical: 6rem;
@@ -630,6 +614,7 @@ a {
 
 .block__header {
   text-align: center;
+  margin-bottom: 4rem;
 }
 
 .block__heading {
@@ -641,18 +626,20 @@ a {
   color: #7b858b;
 }
 
-.block--dark .block__heading {
+.block--dark h1,
+.block--dark h2,
+.block--dark h3 {
   color: #fff;
 }
 
 .block--skewed-right {
   padding-bottom: calc(var(--padding-vertical) + 4rem);
-  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 80%);
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 90%);
 }
 
 .block--skewed-left {
   padding-bottom: calc(var(--padding-vertical) + 4rem);
-  clip-path: polygon(0% 0%, 100% 0%, 100% 80%, 0% 100%);
+  clip-path: polygon(0% 0%, 100% 0%, 100% 90%, 0% 100%);
 }
 
 .container {
@@ -660,10 +647,9 @@ a {
   margin: 0 auto;
 }
 
-/* navigation bar */
-
+/* Navigation Bar */
 .nav {
-  background-color: #000;
+  background: #000;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -685,17 +671,15 @@ a {
   color: #d2d0db;
   transition: color 0.3s;
 }
+
 .nav__item > a:hover {
   color: #fff;
-}
-
-.nav .icon {
-  margin-right: 0;
 }
 
 .nav__toggler {
   opacity: 0.5;
   transition: box-shadow 0.15s;
+  cursor: pointer;
 }
 
 .nav.collapsible--expanded .nav__toggler {
@@ -726,11 +710,7 @@ a {
   }
 }
 
-/* hero */
-
-.hero {
-  clip-path: polygon(0% 0%, 100% 0%, 100% 90%, 0% 100%);
-}
+/* Hero */
 
 .hero__tagline {
   font-size: 2rem;
@@ -754,52 +734,47 @@ a {
   }
 }
 
-
 /* Domain Block */
-
-.block__domain .input-group {
+.block-domain .input-group {
   box-shadow: 0 0 30px 20px #e6ebee;
   border: 0;
-  margin: 4rem auto ;
+  margin: 4rem auto;
   max-width: 670px;
 }
 
 .block-domain__prices {
   display: grid;
-  grid-template-columns: repeat(3,1fr);
-  grid-template-rows: repeat(2,6rem);
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 6rem);
   font-size: 2rem;
   font-weight: 600;
   justify-items: center;
-  align-items: center;
   max-width: 700px;
   margin: 0 auto;
 }
 
-@media screen and (min-width:768px) {
+@media screen and (min-width: 768px) {
   .block-domain__prices {
-    grid-template-columns: repeat(auto-fit,minmax(10rem,1fr));
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
   }
 }
-
-/* plans block */
-
+/* Plans Block */
 .block-plans .grid {
-  gap: 8rem 6rem;
+  gap: 8rem 4rem;
 }
 
 .block-plans .card {
   max-width: 500px;
+  margin: 0 auto;
 }
 
-
-/* features */
-.features {
+/* Features */
+.feature {
   gap: 4rem 2rem;
   margin: 12rem 0;
 }
 
-.features:first-of-type {
+.feature:first-of-type {
   margin-top: 6rem;
 }
 
@@ -811,8 +786,28 @@ a {
   width: 100%;
 }
 
-@media screen and (min-width:768px) {
-  .features:nth-child(odd) .feature__content {
+@media screen and (min-width: 768px) {
+  .feature:nth-of-type(even) .feature__content {
     order: 2;
+  }
+}
+
+/* Showcase Block */
+.block-showcase__image > img {
+  width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .block-showcase .grid {
+    grid-template-columns: 50% 50%;
+  }
+
+  .block-showcase__image {
+    justify-self: end;
+  }
+
+  .block-showcase__image > img {
+    width: auto;
+    max-width: 700px;
   }
 }
